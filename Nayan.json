@@ -9,19 +9,19 @@
   "saveState": true,
   "banMsg": false,
   "adminOnlyMsg": false,
-  "BOTNAME": "nayan-bot",
-  "PREFIX": "/",
+  "BOTNAME": "nobita-bot",
+  "PREFIX": ".",
   "react": "☠️",
   "OPERATOR": [
     "",
-    "100000959749712"
+    "61566927465098"
   ],
   "ADMINBOT": [
-    "100000959749712",
+    "61566927465098",
     ""
   ],
   "OWNER": ["100000959749712"], 
-  "APPROVED": [],
+  "APPROVED": [61566927465098],
   "disabledcmds": [],
   "disabledevents": [],
   "note": "make sure that the bot name you entered is all lowercase",
