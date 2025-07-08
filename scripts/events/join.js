@@ -48,8 +48,8 @@ module.exports.run = async function({ api, event, Users }) {
   if (event.logMessageData.addedParticipants && Array.isArray(event.logMessageData.addedParticipants) && event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     //api.changeNickname(`𝗕𝗢𝗧 ${(!global.config.BOTNAME) ? "Buddy" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
 
-    let gifUrl = 'https://i.postimg.cc/0j4JRMgy/received-1848533269044165.jpg';
-let gifPath = __dirname + '/nobita/join/join.gif';
+    let gifUrl = 'https://i.postimg.cc/SNQXkB0y/lv-0-20231018174834.gif';
+let gifPath = __dirname + '/Nayan/join/join.gif';
 
 axios.get(gifUrl, { responseType: 'arraybuffer' })
 .then(response => {
@@ -66,15 +66,15 @@ APPROVAL ALLOW IN THIS GROUP!!!
 <------------------------------>
 AND FOR ANY COMPLAINTS OR CONTACT BOT OPERATOR 
 
-DEVELOPER :Nahidul Islam naim 
+DEVELOPER : 𝗡𝗔𝗛𝗜𝗗𝗨𝗟 𝗜𝗦𝗟𝗔𝗠 𝗡𝗔𝗜𝗠
 
 🟣Facebook Account Link: 
 
 https://www.facebook.com/fmz.nobita.955288
 
-🔵WHATSAPP NUMBER: wa.me/+8801710498589
+🔵WHATSAPP NUMBER: wa.me/+8801615298449
 
-🟢SUPPORT EMAIL: ntnaim34@gmail.com`, attachment: fs.createReadStream(gifPath)}, threadID));
+🟢SUPPORT EMAIL: www.inobita179@gmail.com`, attachment: fs.createReadStream(gifPath)}, threadID));
   }})
 .catch(error => {
     console.error(error);
@@ -196,4 +196,4 @@ https://www.facebook.com/fmz.nobita.955288
       }
     } catch (e) { return console.log(e) };
   }
-          }
+      }
