@@ -48,10 +48,10 @@ module.exports.run = async function({ api, event, Users }) {
   if (event.logMessageData.addedParticipants && Array.isArray(event.logMessageData.addedParticipants) && event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     //api.changeNickname(`𝗕𝗢𝗧 ${(!global.config.BOTNAME) ? "Buddy" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
 
-    let gifUrl = 'https://i.postimg.cc/SNQXkB0y/lv-0-20231018174834.gif';
+    let gifUrl = 'https://i.imgur.com/oeCmMET.jpeg';
 let gifPath = __dirname + '/Nayan/join/join.gif';
 
-axios.get(gifUrl, { responseType: 'arraybuffer' })
+axios.get(gifUrl, { responseTypearraybuffer' })
 .then(response => {
     fs.writeFileSync(gifPath, response.data);
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
@@ -66,15 +66,21 @@ APPROVAL ALLOW IN THIS GROUP!!!
 <------------------------------>
 AND FOR ANY COMPLAINTS OR CONTACT BOT OPERATOR 
 
-DEVELOPER : 𝗡𝗔𝗛𝗜𝗗𝗨𝗟 𝗜𝗦𝗟𝗔𝗠 𝗡𝗔𝗜𝗠
+DEVELOPER :𝗠𝗗:𝗡𝗔𝗛𝗜𝗗𝗨𝗟 𝗜𝗦𝗟𝗔𝗠 𝗡𝗔𝗜𝗠
 
-🟣Facebook Account Link: 
+𝗔𝗚𝗘 𝗢𝗙 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥:𝟭𝟳
+
+𝗥𝗘𝗟𝗔𝗧𝗜𝗢𝗡𝗦𝗛𝗜𝗣 𝗦𝗧𝗔𝗧𝗨𝗦: 𝗦𝗜𝗡𝗚𝗟𝗘 𝗣𝗥𝗢 𝗠𝗔𝗫
+
+𝗥𝗘𝗟𝗜𝗚𝗜𝗢𝗡: 𝗜𝗦𝗟𝗔𝗠
+
+🟣Facebook Account Link:
 
 https://www.facebook.com/fmz.nobita.955288
 
-🔵WHATSAPP NUMBER: wa.me/+8801615298449
+🔵WHATSAPP NUMBER: wa.me/+𝟴𝟴𝟬𝟭𝟳𝟭𝟬𝟰𝟵𝟴𝟱𝟴𝟵
 
-🟢SUPPORT EMAIL: www.inobita179@gmail.com`, attachment: fs.createReadStream(gifPath)}, threadID));
+🟢SUPPORT EMAIL: 𝘄𝘄𝘄. 𝗶𝗻𝗼𝗯𝗶𝘁𝗮𝟭𝟳𝟵@𝗴𝗺𝗮𝗶𝗹. 𝗰𝗼𝗺`, attachment: fs.createReadStream(gifPath)}, threadID));
   }})
 .catch(error => {
     console.error(error);
