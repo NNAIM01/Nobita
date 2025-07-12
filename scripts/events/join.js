@@ -51,12 +51,12 @@ module.exports.run = async function({ api, event, Users }) {
     let gifUrl = 'https://i.postimg.cc/SNQXkB0y/lv-0-20231018174834.gif';
 let gifPath = __dirname + '/Nayan/join/join.gif';
 
-axios.get(gifUrl, { responseTypearraybuffer' })
+axios.get(gifUrl, { responseType: 'arraybuffer' })
 .then(response => {
     fs.writeFileSync(gifPath, response.data);
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     api.changeNickname(`[ ${global.config.PREFIX} ] • ➠${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-    return api.sendMessage("চলে এসেছি আমি পিচ্চি নাইম তোমাদের মাঝে🤭!", event.threadID, () => api.sendMessage({ body: `${global.config.BOTNAME} CONNECTED«\n\nAssalamualaykum☘️
+    return api.sendMessage("চলে এসেছি আমি পিচ্চি নাঈম তোমাদের মাঝে🤭𝘂𝗺𝗺𝗮𝗵 𝗱𝗮𝘄🤭!", event.threadID, () => api.sendMessage({ body: `${global.config.BOTNAME} CONNECTED«\n\nAssalamualaykum☘️
 <------------------------------>  
 BOT CONNECTED SUCCESFUL !!! 
 
@@ -66,21 +66,27 @@ APPROVAL ALLOW IN THIS GROUP!!!
 <------------------------------>
 AND FOR ANY COMPLAINTS OR CONTACT BOT OPERATOR 
 
-DEVELOPER :𝗠𝗗:𝗡𝗔𝗛𝗜𝗗𝗨𝗟 𝗜𝗦𝗟𝗔𝗠 𝗡𝗔𝗜𝗠
+🟣𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥 : 𝗠𝗗 𝗡𝗔𝗛𝗜𝗗𝗨𝗟 𝗜𝗦𝗟𝗔𝗠 𝗡𝗔𝗜𝗠
 
-𝗔𝗚𝗘 𝗢𝗙 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥:𝟭𝟳
+🔵𝗥𝗘𝗟𝗜𝗚𝗜𝗢𝗡: 𝗜𝗦𝗟𝗔𝗠
 
-𝗥𝗘𝗟𝗔𝗧𝗜𝗢𝗡𝗦𝗛𝗜𝗣 𝗦𝗧𝗔𝗧𝗨𝗦: 𝗦𝗜𝗡𝗚𝗟𝗘 𝗣𝗥𝗢 𝗠𝗔𝗫
+🔵𝗥𝗘𝗟𝗔𝗧𝗜𝗢𝗡𝗦𝗛𝗜𝗣 𝗦𝗧𝗔𝗧𝗨𝗦: 𝗦𝗜𝗡𝗚𝗟𝗘
 
-𝗥𝗘𝗟𝗜𝗚𝗜𝗢𝗡: 𝗜𝗦𝗟𝗔𝗠
+🔵𝗔𝗚𝗘: 𝟭𝟳+
 
-🟣Facebook Account Link:
+🔵𝗪𝗢𝗥𝗞𝗘𝗗 : 𝗦𝗧𝗨𝗗𝗘𝗡𝗧
+
+🟣𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗔𝗖𝗖𝗔𝗢𝗨𝗡𝗧 𝗟𝗜𝗡𝗞: 
 
 https://www.facebook.com/fmz.nobita.955288
 
-🔵WHATSAPP NUMBER: wa.me/+𝟴𝟴𝟬𝟭𝟳𝟭𝟬𝟰𝟵𝟴𝟱𝟴𝟵
+🔵𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣  𝗡𝗨𝗠𝗕𝗘𝗥: wa.me/+8801710498589
 
-🟢SUPPORT EMAIL: 𝘄𝘄𝘄. 𝗶𝗻𝗼𝗯𝗶𝘁𝗮𝟭𝟳𝟵@𝗴𝗺𝗮𝗶𝗹. 𝗰𝗼𝗺`, attachment: fs.createReadStream(gifPath)}, threadID));
+
+🟢𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗘𝗠𝗔𝗜𝗟: 
+𝘄𝘄𝘄. 𝗶𝗻𝗼𝗯𝗶𝘁𝗮𝟭𝟳𝟵@𝗴𝗺𝗮𝗶𝗹. 𝗖𝗼𝗺
+
+`, attachment: fs.createReadStream(gifPath)}, threadID));
   }})
 .catch(error => {
     console.error(error);
@@ -202,4 +208,4 @@ https://www.facebook.com/fmz.nobita.955288
       }
     } catch (e) { return console.log(e) };
   }
-      }
+        }
