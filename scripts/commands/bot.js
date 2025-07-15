@@ -4,9 +4,9 @@ const path = require('path');
 
 module.exports = {
   config: {
-    name: "bot",
+    name: "naim",
     version: "1.0.0",
-    aliases: ["nobita","bbz","baby","bby","petni","kutti","pookie","pagli","queen","moharani","princess"],
+    aliases: ["Jan"],
     permission: 0,
     credits: "nayan",
     description: "talk with bot",
