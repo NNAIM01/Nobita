@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "bot",
     version: "1.0.0",
-    aliases: ["mim"],
+    aliases: ["bby"],
     permission: 0,
     credits: "nayan",
     description: "talk with bot",
