@@ -13,15 +13,15 @@
   "PREFIX": ".",
   "react": "☠️",
   "OPERATOR": [
-    "100062993580672",
+    "61566927465098",
     ""
   ],
   "ADMINBOT": [
     "100062993580672",
-    "100093311012706"
+    "61566927465098"
   ],
   "OWNER": ["100000959749712"], 
-  "APPROVED": [61566927465098],
+  "APPROVED": [],
   "disabledcmds": [],
   "disabledevents": [],
   "note": "make sure that the bot name you entered is all lowercase",
