@@ -8,7 +8,6 @@ const questions = JSON.parse(
 
 let quizSession = {}; // userId অনুযায়ী কুইজ সেশন
 
-// ✅ Config section (prefix যুক্ত)
 module.exports.config = {
   name: "quiz",
   version: "1.0",
@@ -28,7 +27,6 @@ module.exports.config = {
   }
 };
 
-// ✅ রান ফাংশন (প্রথম প্রশ্ন পাঠায়)
 module.exports.run = async function ({ api, event }) {
   const userId = event.senderID;
   const threadId = event.threadID;
@@ -45,18 +43,17 @@ module.exports.run = async function ({ api, event }) {
     score: 0
   };
 
-  sendQuestion(api, threadId, userId);
+  sendQuestion(api, event, userId);
 };
 
-// ✅ প্রশ্ন পাঠানোর ফাংশন
-function sendQuestion(api, threadId, userId) {
+function sendQuestion(api, event, userId) {
   const session = quizSession[userId];
   const question = questions[session.current];
 
   if (!question) {
     api.sendMessage(
       `🎉 কুইজ শেষ! আপনার স্কোর: ${session.score}/${questions.length}`,
-      threadId
+      event.threadID
     );
     delete quizSession[userId];
     return;
@@ -68,23 +65,33 @@ function sendQuestion(api, threadId, userId) {
   }
   msg += "\n⏳ ১০ সেকেন্ডের মধ্যে উত্তর দিন (A/B/C/D)";
 
-  api.sendMessage(msg, threadId);
+  api.sendMessage(msg, event.threadID, (err, info) => {
+    // ✅ handleReply রেজিস্টার করা হচ্ছে এখানে
+    global.client.handleReply.push({
+      name: module.exports.config.name,
+      messageID: info.messageID,
+      userID: userId,
+      threadID: event.threadID
+    });
+  });
 
   session.timeout = setTimeout(() => {
     if (quizSession[userId]) {
-      api.sendMessage("⏰ সময় শেষ! পরের প্রশ্নে যাচ্ছি...", threadId);
+      api.sendMessage("⏰ সময় শেষ! পরের প্রশ্নে যাচ্ছি...", event.threadID);
       session.current++;
-      sendQuestion(api, threadId, userId);
+      sendQuestion(api, event, userId);
     }
   }, 10000);
 }
 
-// ✅ উত্তর চেক করার হ্যান্ডলার
-module.exports.handleReply = async function ({ api, event }) {
+// ✅ উত্তর ধরার হ্যান্ডলার
+module.exports.handleReply = async function ({ api, event, handleReply }) {
   const userId = event.senderID;
   const threadId = event.threadID;
   const answer = event.body.trim().toUpperCase();
 
+  // ✅ কেবল যেই ইউজার কুইজে আছে, সে-ই উত্তর দিতে পারবে
+  if (userId !== handleReply.userID) return;
   if (!quizSession[userId]) return;
 
   const session = quizSession[userId];
@@ -101,5 +108,7 @@ module.exports.handleReply = async function ({ api, event }) {
   }
 
   session.current++;
+  sendQuestion(api, event, userId);
+};  session.current++;
   sendQuestion(api, threadId, userId);
 };
