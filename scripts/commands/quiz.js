@@ -19,7 +19,7 @@ module.exports.config = {
   },
   category: "fun",
   guide: {
-    en: ".quiz"
+    en: "quiz"
   }
 };
 
