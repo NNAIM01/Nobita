@@ -1,16 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 
-const questions = JSON.parse(fs.readFileSync(path.join(__dirname, "../../data/questions.json")));
+// প্রশ্ন JSON ফাইল লোড
+const questions = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../../data/questions.json"))
+);
 
 let quizSession = {}; // userId অনুযায়ী কুইজ সেশন
 
+// ✅ Config section (prefix যুক্ত)
 module.exports.config = {
   name: "quiz",
   version: "1.0",
   author: "Naim",
   cooldowns: 5,
   role: 0,
+  prefix: true,
   shortDescription: {
     en: "Start a quiz!"
   },
@@ -19,16 +24,20 @@ module.exports.config = {
   },
   category: "fun",
   guide: {
-    en: "quiz"
+    en: ".quiz"
   }
 };
 
-module.exports.run = async function({ api, event }) {
+// ✅ রান ফাংশন (প্রথম প্রশ্ন পাঠায়)
+module.exports.run = async function ({ api, event }) {
   const userId = event.senderID;
   const threadId = event.threadID;
 
   if (quizSession[userId]) {
-    return api.sendMessage("❗তুমি ইতোমধ্যেই কুইজে আছো! উত্তর দাও A/B/C/D দিয়ে।", threadId);
+    return api.sendMessage(
+      "❗ তুমি ইতোমধ্যেই কুইজে আছো! উত্তর দাও A/B/C/D দিয়ে।",
+      threadId
+    );
   }
 
   quizSession[userId] = {
@@ -39,12 +48,16 @@ module.exports.run = async function({ api, event }) {
   sendQuestion(api, threadId, userId);
 };
 
+// ✅ প্রশ্ন পাঠানোর ফাংশন
 function sendQuestion(api, threadId, userId) {
   const session = quizSession[userId];
   const question = questions[session.current];
 
   if (!question) {
-    api.sendMessage(`🎉 কুইজ শেষ! আপনার স্কোর: ${session.score}/${questions.length}`, threadId);
+    api.sendMessage(
+      `🎉 কুইজ শেষ! আপনার স্কোর: ${session.score}/${questions.length}`,
+      threadId
+    );
     delete quizSession[userId];
     return;
   }
@@ -66,8 +79,8 @@ function sendQuestion(api, threadId, userId) {
   }, 10000);
 }
 
-// ✅ উত্তর ধরার হ্যান্ডলার
-module.exports.handleReply = async function({ api, event }) {
+// ✅ উত্তর চেক করার হ্যান্ডলার
+module.exports.handleReply = async function ({ api, event }) {
   const userId = event.senderID;
   const threadId = event.threadID;
   const answer = event.body.trim().toUpperCase();
