@@ -66,7 +66,6 @@ function sendQuestion(api, event, userId) {
   msg += "\n⏳ ১০ সেকেন্ডের মধ্যে উত্তর দিন (A/B/C/D)";
 
   api.sendMessage(msg, event.threadID, (err, info) => {
-    // ✅ handleReply রেজিস্টার করা হচ্ছে এখানে
     global.client.handleReply.push({
       name: module.exports.config.name,
       messageID: info.messageID,
@@ -84,13 +83,11 @@ function sendQuestion(api, event, userId) {
   }, 10000);
 }
 
-// ✅ উত্তর ধরার হ্যান্ডলার
 module.exports.handleReply = async function ({ api, event, handleReply }) {
   const userId = event.senderID;
   const threadId = event.threadID;
   const answer = event.body.trim().toUpperCase();
 
-  // ✅ কেবল যেই ইউজার কুইজে আছে, সে-ই উত্তর দিতে পারবে
   if (userId !== handleReply.userID) return;
   if (!quizSession[userId]) return;
 
@@ -109,6 +106,4 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 
   session.current++;
   sendQuestion(api, event, userId);
-};  session.current++;
-  sendQuestion(api, threadId, userId);
 };
