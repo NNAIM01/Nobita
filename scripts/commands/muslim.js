@@ -11,7 +11,7 @@ module.exports = {
   permissions: [],
   credits: "Nahidul Islam Naim",
   prefix: true,
-  category: "muslim",
+  category: "Muslim",
 
   execute: async function ({ message, api }) {
     const videoLinks = [
