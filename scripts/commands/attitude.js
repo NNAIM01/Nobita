@@ -1,6 +1,6 @@
-/** Islamic video command by Nahidul Islam Naim **/
+/** attitude video command by Nahidul Islam Naim **/
 module.exports.config = {
-  name: "muslim",
+  name: "nobita",
   version: "1.0.0",
   permission: 0,
   credits: "Nahidul Islam Naim",
