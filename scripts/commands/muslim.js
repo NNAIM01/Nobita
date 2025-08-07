@@ -20,19 +20,7 @@ const fs = require("fs-extra");
 
 module.exports.run = async ({ api, event }) => {
   const videos = [
-    "https://i.imgur.com/wBCueO9.mp4",
-    "https://i.imgur.com/gebrbda.mp4",
-    "https://i.imgur.com/wSFNggJ.mp4",
-    "https://i.imgur.com/3yMWmFJ.mp4",
-    "https://i.imgur.com/vXP90gV.mp4",
-    "https://i.imgur.com/yDrXkJK.mp4",
-    "https://i.imgur.com/wlKg3nI.mp4",
-    "https://i.imgur.com/wgHmxyV.mp4",
-    "https://i.imgur.com/rjUfspJ.mp4",
-    "https://i.imgur.com/dyJIRFw.mp4",
-    "https://i.imgur.com/LIP6J8D.mp4",
-    "https://i.imgur.com/hLu0wqP.mp4",
-    "https://i.imgur.com/6aBSMlK.mp4"
+    "https://drive.google.com/uc?export=download&id=1K50v3gBiSrf_LgIZKgNkUe7S82svXzAJ"
   ];
 
   const videoURL = videos[Math.floor(Math.random() * videos.length)];
