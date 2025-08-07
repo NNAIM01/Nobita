@@ -6,7 +6,7 @@ module.exports.config = {
   credits: "Nahidul Islam Naim",
   description: "Random Islamic video sender",
   prefix: true,
-  category: "Muslim",
+  category: "Attitude",
   usages: "",
   cooldowns: 5,
   dependencies: {
@@ -35,7 +35,7 @@ module.exports.run = async ({ api, event }) => {
 
     res.data.pipe(fs.createWriteStream(pathVideo)).on("close", () => {
       api.sendMessage({
-        body: "🌙 ইসলামিক ভিডিও নিচে দেওয়া হলো\n\n☪️ ইসলামই শান্তি 📿",
+        body: "👿 নাইম এর দুর্বলতা নাই\n\n☠️👿 নাইম মানেই attitude king 👑",
         attachment: fs.createReadStream(pathVideo)
       }, event.threadID, () => fs.unlinkSync(pathVideo), event.messageID);
     });
