@@ -6,7 +6,7 @@ module.exports = {
   name: "islamic",
   aliases: ["islamic video", "ইসলামিক ভিডিও", "video"],
   description: "একটি ইসলামিক ভিডিও সরাসরি পাঠায়",
-  usage: "islamic",
+  usage: "muslim",
   cooldown: 5,
   permissions: [],
   credits: "Nahidul Islam Naim",
