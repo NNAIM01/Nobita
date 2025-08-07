@@ -11,7 +11,7 @@ module.exports = {
   permissions: [],
   credits: "Nahidul Islam Naim",
   prefix: true,
-  category: "Media2",
+  category: "Islamic", // ✅ category ঠিকমতো string আকারে বসানো
 
   execute: async function ({ message, api }) {
     const videoLinks = [
@@ -51,7 +51,9 @@ module.exports = {
           body: "☪️ ইসলামেই সুখ, ইসলামের শান্তি 🌙\n\n📿 নিচে একটি ইসলামিক ভিডিও 👇",
           attachment: fs.createReadStream(filePath)
         }, message.threadID, () => {
-          fs.unlinkSync(filePath);
+          if (fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath);
+          }
         }, message.messageID);
       });
 
