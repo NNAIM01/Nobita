@@ -1,70 +1,59 @@
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
-
-module.exports = {
+/** Islamic video command by Nahidul Islam Naim **/
+module.exports.config = {
   name: "muslim",
-  aliases: ["islamic video", "ইসলামিক ভিডিও", "video"],
-  description: "একটি ইসলামিক ভিডিও সরাসরি পাঠায়",
-  usage: "muslim",
-  cooldown: 5,
-  permissions: [],
+  version: "1.0.0",
+  permission: 0,
   credits: "Nahidul Islam Naim",
+  description: "Random Islamic video sender",
   prefix: true,
-  category: "Islamic", // ✅ category ঠিকমতো string আকারে বসানো
+  category: "Muslim",
+  usages: "",
+  cooldowns: 5,
+  dependencies: {
+    "axios": "",
+    "fs-extra": ""
+  }
+};
 
-  execute: async function ({ message, api }) {
-    const videoLinks = [
-      "https://i.imgur.com/wBCueO9.mp4",
-      "https://i.imgur.com/gebrbda.mp4",
-      "https://i.imgur.com/wSFNggJ.mp4",
-      "https://i.imgur.com/3yMWmFJ.mp4",
-      "https://i.imgur.com/vXP90gV.mp4",
-      "https://i.imgur.com/yDrXkJK.mp4",
-      "https://i.imgur.com/wlKg3nI.mp4",
-      "https://i.imgur.com/wgHmxyV.mp4",
-      "https://i.imgur.com/rjUfspJ.mp4",
-      "https://i.imgur.com/dyJIRFw.mp4",
-      "https://i.imgur.com/LIP6J8D.mp4",
-      "https://i.imgur.com/hLu0wqP.mp4",
-      "https://i.imgur.com/6aBSMlK.mp4"
-    ];
+const axios = require("axios");
+const fs = require("fs-extra");
 
-    const randomIndex = Math.floor(Math.random() * videoLinks.length);
-    const videoUrl = videoLinks[randomIndex];
+module.exports.run = async ({ api, event }) => {
+  const videos = [
+    "https://i.imgur.com/wBCueO9.mp4",
+    "https://i.imgur.com/gebrbda.mp4",
+    "https://i.imgur.com/wSFNggJ.mp4",
+    "https://i.imgur.com/3yMWmFJ.mp4",
+    "https://i.imgur.com/vXP90gV.mp4",
+    "https://i.imgur.com/yDrXkJK.mp4",
+    "https://i.imgur.com/wlKg3nI.mp4",
+    "https://i.imgur.com/wgHmxyV.mp4",
+    "https://i.imgur.com/rjUfspJ.mp4",
+    "https://i.imgur.com/dyJIRFw.mp4",
+    "https://i.imgur.com/LIP6J8D.mp4",
+    "https://i.imgur.com/hLu0wqP.mp4",
+    "https://i.imgur.com/6aBSMlK.mp4"
+  ];
 
-    const fileName = `muslim_${Date.now()}.mp4`;
-    const filePath = path.join(__dirname, "..", "cache", fileName);
+  const videoURL = videos[Math.floor(Math.random() * videos.length)];
+  const pathVideo = __dirname + "/cache/muslim.mp4";
 
-    try {
-      const response = await axios({
-        method: "GET",
-        url: videoUrl,
-        responseType: "stream"
-      });
+  try {
+    const res = await axios({
+      method: "GET",
+      url: videoURL,
+      responseType: "stream"
+    });
 
-      const writer = fs.createWriteStream(filePath);
-      response.data.pipe(writer);
+    res.data.pipe(fs.createWriteStream(pathVideo)).on("close", () => {
+      api.sendMessage({
+        body: "🌙 ইসলামিক ভিডিও নিচে দেওয়া হলো\n\n☪️ ইসলামই শান্তি 📿",
+        attachment: fs.createReadStream(pathVideo)
+      }, event.threadID, () => fs.unlinkSync(pathVideo), event.messageID);
+    });
 
-      writer.on("finish", () => {
-        api.sendMessage({
-          body: "☪️ ইসলামেই সুখ, ইসলামের শান্তি 🌙\n\n📿 নিচে একটি ইসলামিক ভিডিও 👇",
-          attachment: fs.createReadStream(filePath)
-        }, message.threadID, () => {
-          if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
-          }
-        }, message.messageID);
-      });
-
-      writer.on("error", err => {
-        console.error("File write error:", err);
-        api.sendMessage("❌ ভিডিও পাঠাতে সমস্যা হয়েছে!", message.threadID, message.messageID);
-      });
-
-    } catch (err) {
-      console.error("Axios error:", err);
-      api.sendMessage("❌ ভিডিও লোড করতে পারিনি!", message.threadID, message.messageID);
-    }
+  } catch (error) {
+    console.error(error);
+    api.sendMessage("❌ ভিডিও লোড করা যাচ্ছে না!", event.threadID, event.messageID);
   }
 };
