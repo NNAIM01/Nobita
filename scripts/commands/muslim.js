@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-  name: "islamic",
+  name: "muslim",
   aliases: ["islamic video", "ইসলামিক ভিডিও", "video"],
   description: "একটি ইসলামিক ভিডিও সরাসরি পাঠায়",
   usage: "muslim",
@@ -11,6 +11,7 @@ module.exports = {
   permissions: [],
   credits: "Nahidul Islam Naim",
   prefix: true,
+  category: "muslim",
 
   execute: async function ({ message, api }) {
     const videoLinks = [
@@ -32,7 +33,7 @@ module.exports = {
     const randomIndex = Math.floor(Math.random() * videoLinks.length);
     const videoUrl = videoLinks[randomIndex];
 
-    const fileName = `islamic_${Date.now()}.mp4`;
+    const fileName = `muslim_${Date.now()}.mp4`;
     const filePath = path.join(__dirname, "..", "cache", fileName);
 
     try {
@@ -50,7 +51,7 @@ module.exports = {
           body: "☪️ ইসলামেই সুখ, ইসলামের শান্তি 🌙\n\n📿 নিচে একটি ইসলামিক ভিডিও 👇",
           attachment: fs.createReadStream(filePath)
         }, message.threadID, () => {
-          fs.unlinkSync(filePath); // পাঠানোর পর ফাইল ডিলিট হবে
+          fs.unlinkSync(filePath);
         }, message.messageID);
       });
 
