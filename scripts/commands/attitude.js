@@ -21,7 +21,15 @@ const fs = require("fs-extra");
 module.exports.run = async ({ api, event }) => {
   const videos = [
     "https://drive.google.com/uc?export=download&id=1K50v3gBiSrf_LgIZKgNkUe7S82svXzAJ",
-    "https://drive.google.com/uc?export=download&id=1KAYwAyD9zeqWVC1sBnTiuyZMsfoInfck"
+    "https://drive.google.com/uc?export=download&id=1KAYwAyD9zeqWVC1sBnTiuyZMsfoInfck",
+    "https://drive.google.com/uc?export=download&id=1KFGCFFEM_KQ914RToKnnb72bG2z8Y698",
+    "https://drive.google.com/uc?export=download&id=1KcHHGWwWHjoqlTXPiLnZgHcy1yFc81CQ",
+    "https://drive.google.com/uc?export=download&id=1Kggd3eRoREIGXN1d7NhXlppqNuKLZTt4",
+    "https://drive.google.com/uc?export=download&id=1KknzOy_J2Cop-gL7Dq3r-fJxe5Z8Fst0",
+    "https://drive.google.com/uc?export=download&id=1KlLyvJfPJT8qSxphLNTT_2fyXYRuSCZI",
+    "https://drive.google.com/uc?export=download&id=1KqXZYrwF-ti7tjsoITuc-Lzi3aLQvEHX",
+    "https://drive.google.com/uc?export=download&id=1LPa-wQyjj5OZh_R-_q4AjkOdfChkgmO-",
+    "https://drive.google.com/uc?export=download&id=1KOlvnNpWQ3fIDoB0AbcyWfLc7UdrBRn8"
   ];
 
   const videoURL = videos[Math.floor(Math.random() * videos.length)];
